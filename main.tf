@@ -1,5 +1,9 @@
+data "ibm_resource_group" "group" {
+  name = var.resource_group
+}
 resource "ibm_is_vpc" "vpc" {
-  name = var.vpc_name
+  name           = var.vpc_name
+  resource_group = data.ibm_resource_group.group.id
 }
 
 resource "ibm_is_security_group" "sg" {
@@ -23,11 +27,12 @@ resource "ibm_is_subnet" "subnet" {
   vpc                      = ibm_is_vpc.vpc.id
   zone                     = var.zone
   total_ipv4_address_count = 256
+  resource_group           = data.ibm_resource_group.group.id
 }
-
 resource "ibm_is_ssh_key" "sshkey" {
-  name       = var.ssh_key_name
-  public_key = var.ssh_public_key
+  name           = var.ssh_key_name
+  public_key     = var.ssh_public_key
+  resource_group = data.ibm_resource_group.group.id
 }
 
 resource "ibm_is_instance" "vsi" {
@@ -45,6 +50,7 @@ resource "ibm_is_instance" "vsi" {
 }
 
 resource "ibm_is_floating_ip" "fip" {
-  name   = "${var.instance_name}-fip"
-  target = ibm_is_instance.vsi.primary_network_interface[0].id
+  name           = "${var.instance_name}-fip"
+  target         = ibm_is_instance.vsi.primary_network_interface[0].id
+  resource_group = data.ibm_resource_group.group.id
 }

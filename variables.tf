@@ -35,3 +35,7 @@ variable "ssh_public_key" {
   type      = string
   sensitive = true
 }
+
+variable "resource_group" {
+  type = string
+}
