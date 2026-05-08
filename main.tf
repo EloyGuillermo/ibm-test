@@ -43,6 +43,7 @@ resource "ibm_is_instance" "vsi" {
   profile = var.profile
   image   = var.image
   keys    = [ibm_is_ssh_key.sshkey.id]
+  resource_group = data.ibm_resource_group.group.id
 
   primary_network_interface {
     subnet          = ibm_is_subnet.subnet.id
