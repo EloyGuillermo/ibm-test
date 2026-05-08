@@ -18,9 +18,6 @@ variable "ssh_key_name" {
   type = string
 }
 
-variable "public_key_path" {
-  type = string
-}
 
 variable "instance_name" {
   type = string
@@ -32,4 +29,9 @@ variable "profile" {
 
 variable "image" {
   type = string
+}
+
+variable "ssh_public_key" {
+  type      = string
+  sensitive = true
 }

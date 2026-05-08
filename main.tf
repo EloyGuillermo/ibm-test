@@ -27,7 +27,7 @@ resource "ibm_is_subnet" "subnet" {
 
 resource "ibm_is_ssh_key" "sshkey" {
   name       = var.ssh_key_name
-  public_key = file(var.public_key_path)
+  public_key = var.ssh_public_key
 }
 
 resource "ibm_is_instance" "vsi" {
