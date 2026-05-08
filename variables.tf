@@ -1,30 +1,35 @@
 variable "region" {
-  description = "Región IBM Cloud"
-  type        = string
-}
-
-variable "vpc_name" {
-  description = "Nombre de la VPC"
-  type        = string
-}
-
-variable "subnet_name" {
-  description = "Nombre de la subred"
-  type        = string
+  type = string
 }
 
 variable "zone" {
-  description = "Zona de disponibilidad"
-  type        = string
+  type = string
 }
 
-variable "subnet_ipv4_count" {
-  description = "Cantidad de IPs IPv4"
-  type        = number
-  default     = 256
+variable "vpc_name" {
+  type = string
 }
 
-variable "resource_group" {
-  description = "Nombre del resource group"
-  type        = string
+variable "subnet_name" {
+  type = string
+}
+
+variable "ssh_key_name" {
+  type = string
+}
+
+variable "public_key_path" {
+  type = string
+}
+
+variable "instance_name" {
+  type = string
+}
+
+variable "profile" {
+  type = string
+}
+
+variable "image" {
+  type = string
 }
