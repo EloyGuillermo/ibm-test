@@ -30,7 +30,7 @@ resource "ibm_is_subnet" "subnet" {
   total_ipv4_address_count = 256
   resource_group           = data.ibm_resource_group.group.id
 }
-resource "ibm_is_ssh_key" "sshkey" {
+resource "ibm_is_ssh_key" "sshkey-egv" {
   name           = var.ssh_key_name
   public_key     = var.ssh_public_key
   resource_group = data.ibm_resource_group.group.id
@@ -42,7 +42,7 @@ resource "ibm_is_instance" "vsi" {
   zone    = var.zone
   profile = var.profile
   image   = var.image
-  keys    = [ibm_is_ssh_key.sshkey.id]
+  keys    = [ibm_is_ssh_key.sshkey-egv.id]
   resource_group = data.ibm_resource_group.group.id
 
   primary_network_interface {
